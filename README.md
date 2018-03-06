@@ -1,0 +1,32 @@
+# Mac apk installer
+
+## Prerequisite
+
+* adb
+* iTerm2
+
+## 1. Automator -> File(new) -> Application
+
+## 2. AppleScript
+
+Replace adb with your own path
+
+```applescript
+on run argv
+    set theFilePath to POSIX path of (item 1 of argv)
+    tell application "iTerm"
+        activate
+        tell current window
+            tell current session
+                write text "/Users/eprendre/Documents/android-sdk-macosx/platform-tools/adb install -r " & theFilePath
+            end tell
+        end tell
+    end tell
+end run
+```
+
+![pic1](pic1.jpg)
+
+## 3. Default
+
+![default](default.jpg)
