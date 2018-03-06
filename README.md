@@ -27,6 +27,8 @@ end run
 
 ![pic1](pic1.jpg)
 
-## 3. Default
+## 3. Save as xxx.app
+
+## 4. Set apk open with xxx.app
 
 ![default](default.jpg)
