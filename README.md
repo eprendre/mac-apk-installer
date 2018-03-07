@@ -1,5 +1,7 @@
 # Mac apk installer
 
+![showcase](showcase.gif)
+
 ## Prerequisite
 
 * adb
