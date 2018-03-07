@@ -7,7 +7,7 @@
 
 ## I'm lazy
 
-Just download `iTermAdbInstall.app` or `TerminalAdbInstall.app`.
+Just download `iTermAdbInstall.app` or `TerminalAdbInstall.app` from release.
 
 ## Manually
 
