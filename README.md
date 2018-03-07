@@ -21,15 +21,19 @@ Make sure `adb` command is available from your terminal.
 
 ```applescript
 on run argv
-    set theFilePath to POSIX path of (item 1 of argv)
-    tell application "iTerm"
-        activate
-        tell current window
-            tell current session
-                write text "adb install -r " & theFilePath
+    try
+        set theFilePath to POSIX path of (item 1 of argv)
+        tell application "iTerm"
+            activate
+            tell current window
+                tell current session
+                    write text "adb install -r " & theFilePath
+                end tell
             end tell
         end tell
-    end tell
+    on error errMsg
+        display dialog "Please open with apk file"
+    end try
 end run
 ```
 
@@ -37,12 +41,16 @@ end run
 
 ```applescript
 on run argv
-    set theFilePath to POSIX path of (item 1 of argv)
-    tell application "Terminal"
-        if not (exists window 1) then reopen
-        activate
-        do script ("adb install -r " & theFilePath) in window 1
-    end tell
+    try
+        set theFilePath to POSIX path of (item 1 of argv)
+        tell application "Terminal"
+            if not (exists window 1) then reopen
+            activate
+            do script ("adb install -r " & theFilePath) in window 1
+        end tell
+    on error errMsg
+        display dialog "Please open with apk file"
+    end try
 end run
 ```
 
