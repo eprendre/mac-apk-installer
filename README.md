@@ -5,13 +5,19 @@
 * adb
 * Terminal or iTerm2
 
-## 1. Automator -> File(new) -> Application
+## I'm lazy
 
-## 2. AppleScript
+Just download `iTermAdbInstall.app` or `TerminalAdbInstall.app`.
 
-Replace adb with your own path
+## Manually
 
-### iTerm
+### 1. Automator -> File(new) -> Application
+
+### 2. AppleScript
+
+Make sure `adb` command is available from your terminal.
+
+#### iTerm
 
 ```applescript
 on run argv
@@ -20,29 +26,30 @@ on run argv
         activate
         tell current window
             tell current session
-                write text "/Users/eprendre/Documents/android-sdk-macosx/platform-tools/adb install -r " & theFilePath
+                write text "adb install -r " & theFilePath
             end tell
         end tell
     end tell
 end run
 ```
 
-### Terminal
+#### Terminal
 
 ```applescript
 on run argv
     set theFilePath to POSIX path of (item 1 of argv)
     tell application "Terminal"
+        if not (exists window 1) then reopen
         activate
-        do script ("/Users/eprendre/Documents/android-sdk-macosx/platform-tools/adb install -r " & theFilePath)
+        do script ("adb install -r " & theFilePath) in window 1
     end tell
 end run
 ```
 
-![pic1](pic1.jpg)
+![automator](automator.jpg)
 
-## 3. Save as xxx.app
+### 3. Save as xxx.app
 
-## 4. Set apk open with xxx.app
+### 4. Set apk open with xxx.app
 
 ![default](default.jpg)
